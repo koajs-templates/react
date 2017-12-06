@@ -1,0 +1,37 @@
+{
+  "name": "template",
+  "version": "0.1.0",
+  "private": true,
+  "proxy" :"http://localhost:4000/",
+  "scripts": {
+    "dev": "concurrently -k \"npm run client\" \"npm run server\"",
+    "start": "npm run build && node index.js",
+    "server": "nodemon -w app.js -w server index.js",
+    "client": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "release": "npm-run-all clean build release:copy release:deps release:package",
+    "clean": "rimraf build dist",
+    "release:copy": "shx mkdir -p dist/$npm_package_name && shx cp -r server build package.json index.js dist/$npm_package_name",
+    "release:deps": "cd dist/$npm_package_name && npm i --production",
+    "release:package": "cd dist && tar -zcvf $npm_package_name.tar.gz $npm_package_name"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.2.1",
+    "koa-static": "^4.0.1",
+    "koa2-history-api-fallback": "^0.0.5"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "npm-run-all": "^4.1.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.0.17",
+    "shx": "^0.2.2"
+  }
+}
