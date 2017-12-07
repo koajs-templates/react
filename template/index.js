@@ -10,5 +10,6 @@ require('babel-core/register')({
     ],
   ],
   ignore: /node_modules\/(?!koa-*)/,
+  babelrc: false,
 });
 require('./server/app');
