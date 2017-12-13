@@ -1,8 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import routes from "./router";
+import "./index.css";
+import registerServiceWorker from "./registerServiceWorker";
+
+ReactDOM.render(
+  <Router>
+    <div>
+      {routes.map((route, index) => (
+        <Route
+          exact={route.exact}
+          key={index}
+          path={route.path}
+          component={route.component}
+        />
+      ))}
+    </div>
+  </Router>,
+  document.getElementById("root")
+);
 registerServiceWorker();
