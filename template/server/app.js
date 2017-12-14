@@ -11,7 +11,7 @@ const app = new Koa();
 const PORT = process.env.HTTP_PORT || 4000;
 const IP = process.env.HTTP_IP || undefined;
 
-// app.use(historyApiFallback());
+app.use(historyApiFallback());
 app.use(
   serve(path.resolve(__dirname, '../build'), {
     maxage: 1000 * 60 * 60 * 24 * 30, // a month

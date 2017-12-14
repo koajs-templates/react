@@ -1,10 +1,10 @@
-import App from "../App";
 import About from "../components/About";
+import Home from "../components/Home";
 
 export default [
   {
     path: "/",
-    component: App,
+    component: Home,
     exact: true
   },
   {
