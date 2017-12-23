@@ -1,11 +1,13 @@
-import Router from 'koa-router';
+import Router from "koa-router";
 
-const router = Router();
+export default function() {
+  const router = new Router();
 
-router.prefix('/api');
+  router.prefix("/api");
 
-router.get('/hello', async (ctx) => {
-  ctx.body = 'hello world';
-});
+  router.get("/hello", async ctx => {
+    ctx.body = "Hello React";
+  });
 
-export default router;
+  return router.routes();
+}
